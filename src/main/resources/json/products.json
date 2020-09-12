@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "name": "Smartphone Moto G8 Play 32GB",
+    "description": "Smartphone Motorola G8 Play 32GB Dual Chip Android Tela 6.2 - Helio P70M 4G Wi-Fi Câmera 13MP + 8MP + 2MP - Vermelho Magenta.",
+    "price": 1199.99
+  },
+  {
+    "id": 2,
+    "name": "Smartphone LG K41S 32GB",
+    "description": "Dual Chip Android.",
+    "price": 999.99
+  },
+  {
+    "id": 3,
+    "name": "iPhone 11 Pro Max 512GB",
+    "description": "Revolucionário sistema de câmera tripla que amplia possibilidades sem abrir mão da simplicidade.",
+    "price": 8999.99
+  }
+]
+
+
+
+
+
+
+
+
+
+
+

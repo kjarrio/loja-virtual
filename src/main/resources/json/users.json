@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Admin",
+    "email": "admin@admin.com",
+    "address": "Address",
+    "telephone": "(11)12345-1234",
+    "birthDate": "1970-01-01"
+  },
+  {
+    "id": 2,
+    "name": "User",
+    "email": "user@user.com",
+    "address": "Address",
+    "telephone": "(11)12345-1234",
+    "birthDate": "1970-01-01"
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
