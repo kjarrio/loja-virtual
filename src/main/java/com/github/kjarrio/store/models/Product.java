@@ -1,23 +1,30 @@
 package com.github.kjarrio.store.models;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity(name = "products")
+@ApiModel("Product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @ApiModelProperty(name = "ID", value = "", hidden = true)
     private Integer id;
 
     @Column(nullable = false)
+    @ApiModelProperty(name = "Name", value = "", position = 1)
     private String name;
 
     @Column
+    @ApiModelProperty(name = "Description", value = "", position = 2)
     private String description;
 
     @Column(nullable = false)
+    @ApiModelProperty(name = "Price", value = "", position = 3)
     private BigDecimal price;
 
     public Product() {}

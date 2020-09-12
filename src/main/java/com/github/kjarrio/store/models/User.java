@@ -2,6 +2,8 @@ package com.github.kjarrio.store.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
@@ -12,29 +14,37 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity(name = "users")
+@ApiModel("Users")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @ApiModelProperty(hidden = true)
     private Integer id;
 
     @Column(nullable = false, updatable = false)
+    @ApiModelProperty(name = "Name", value = "", position = 1)
     private String name;
 
     @Column(unique = true, nullable = false, updatable = false)
+    @ApiModelProperty(name = "Email", value = "", position = 2)
     private String email;
 
     @Column(nullable = false)
+    @ApiModelProperty(name = "Password", value = "", position = 3)
     @JsonIgnore
     private String password;
 
     @Column(nullable = false)
+    @ApiModelProperty(name = "Telephone", value = "", position = 3)
     private String telephone;
 
     @Column(nullable = false)
+    @ApiModelProperty(name = "Address", value = "", position = 4)
     private String address;
 
     @Column(nullable = false, updatable = false)
+    @ApiModelProperty(name = "BirthDate", value = "", position = 5)
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date birthDate;
@@ -69,6 +79,7 @@ public class User implements UserDetails {
     }
 
     @JsonIgnore
+    @ApiModelProperty(hidden = true)
     public String getUsername() {
         return email;
     }
@@ -113,32 +124,39 @@ public class User implements UserDetails {
         this.birthDate = birthDate;
     }
 
+
+
     @Override
     @JsonIgnore
+    @ApiModelProperty(hidden = true)
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.getEmail().equals("admin@admin.com") ? Arrays.asList((GrantedAuthority) () -> "ROLE_ADMIN", (GrantedAuthority) () -> "ROLE_USER") : new ArrayList<>();
     }
 
     @Override
     @JsonIgnore
+    @ApiModelProperty(hidden = true)
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
     @JsonIgnore
+    @ApiModelProperty(hidden = true)
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
     @JsonIgnore
+    @ApiModelProperty(hidden = true)
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
     @JsonIgnore
+    @ApiModelProperty(hidden = true)
     public boolean isEnabled() {
         return true;
     }

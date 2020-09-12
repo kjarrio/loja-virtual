@@ -1,23 +1,28 @@
 package com.github.kjarrio.store.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity(name = "purchases")
+@ApiModel("Purchase")
 public class Purchase {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @ApiModelProperty(hidden = true)
     private Integer id;
 
     @OneToOne(cascade=CascadeType.DETACH)
+    @ApiModelProperty(name = "User")
     private User user;
 
     @ManyToMany(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
+    @ApiModelProperty(name = "Products")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Product> products;
 
@@ -57,27 +62,4 @@ public class Purchase {
         return total;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Purchase purchase = (Purchase) o;
-        return Objects.equals(id, purchase.id) &&
-                Objects.equals(user, purchase.user) &&
-                Objects.equals(products, purchase.products);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, user, products);
-    }
-
-    @Override
-    public String toString() {
-        return "Purchase{" +
-                "id=" + id +
-                ", user=" + user +
-                ", products=" + products +
-                '}';
-    }
 }
