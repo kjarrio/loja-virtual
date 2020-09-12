@@ -2,10 +2,29 @@ package com.github.kjarrio.store;
 
 import com.github.kjarrio.store.models.Product;
 import com.github.kjarrio.store.models.User;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestUtils {
+
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    public static String formatDate(Date date) {
+        return dateFormat.format(date);
+    }
+
+    public static byte[] toJson(Object obj) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+            return mapper.writeValueAsBytes(obj);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     public static User createTestUser() {
         return createTestUser("user@user.com");
