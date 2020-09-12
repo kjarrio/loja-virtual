@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +29,7 @@ public class User implements UserDetails {
 
     @Column(unique = true, nullable = false, updatable = false)
     @ApiModelProperty(name = "Email", value = "", position = 2)
+    @Email(message = "Email should be valid")
     private String email;
 
     @Column(nullable = false)
